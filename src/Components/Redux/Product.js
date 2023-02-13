@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
+import {useDispatch} from 'react-redux';
+import { addToCart } from './Product-actions/Productactions';
 
 function Product() {
+  const dispatch = useDispatch();
 const [product,setProduct] = useState({});
 const {id} = useParams();
   
@@ -30,7 +33,7 @@ const getProductData = async()=>{
                   <h6>{product.category}</h6>
                   <h4 className='bg-primary p-1 text-white'>price: ${product.price}</h4>
                   <p>{product.description}</p>
-                  <button className='btn btn-primary'>Add To Cart</button>
+                  <button className='btn btn-primary' onClick={()=>{dispatch(addToCart(product))}}>Add To Cart</button>
               </div>
               </div>
           </div>
