@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { fetchProducts } from './Redux/Product-actions/Productactions';
 
 function Products() {
-    const [products,setProducts] = useState([]);
-    const getProducts = async ()=>{
-        const response = await fetch('https://fakestoreapi.com/products');
-        const data = await response.json();
-        console.log(data);
-        setProducts(data);
-    }
+    const products = useSelector((state)=>state.productData.products)
+    console.log(products)
+    const dispatch = useDispatch();
+   
 
     useEffect(()=>{
-        getProducts();
+       dispatch(fetchProducts());
     },[])
 
   return (

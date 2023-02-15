@@ -1,8 +1,9 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 
 function Header() {
-  return (
+  const naviate = useNavigate();
+  return ( 
     <>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
@@ -20,6 +21,9 @@ function Header() {
         </li>
         <li class="nav-item">
           <Link to="cart" class="nav-link" href="#">cart</Link>
+        </li>
+        <li class="nav-item">
+          <Link to="logout" class="nav-link" href="#">logOut</Link>
         </li>
         <li class="nav-item">
           <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
